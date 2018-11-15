@@ -7,6 +7,7 @@
 #include <string>
 #include <QString>
 #include <QTextStream>
+#include <QTextBrowser>
 
 using namespace std;
 
@@ -35,13 +36,13 @@ void MainWindow::on_pushButton_clicked()
     char name[500];
     txt = ".txt";
     space=" ";
-    ui->textEdit->insertPlainText("Name of your poll: ");
-    cin >> text;
+    ui->textBrowser->setText("Name of your poll: ");
+    //cin >> text;
     text = text+txt;
     strcpy(name,text.c_str());
 
     ofstream fout(name);
-    ui->textEdit->insertPlainText("Enter your question: (to stop press #)");
+    //ui->textEdit->insertPlainText("Enter your question: (to stop press #)");
     //ui->lineEdit_2->setText("Enter your question: (to stop press #)");
     //cout << "=>Enter your question: (to stop press #)"<<endl;
     int x = 1;
@@ -106,11 +107,13 @@ void MainWindow::on_pushButton_5_clicked()
 {
     string opros;
     int N = 0;
-    cout << "Choose poll:" << endl;
-    cin >> opros;
+    ui->textBrowser->append("Choose poll: ");
+    //cout << "Choose poll:" << endl;
+    //cin >> opros;
     ifstream f (opros + ".txt");
     if (!f){
-        cout << "No such poll" << endl;
+        ui->textBrowser->append("No such poll");
+        //cout << "No such poll" << endl;
     }
     ifstream fin ("answers.txt");
     for (string line; getline(fin, line);){// построчно получаем вопросы из файла
@@ -143,7 +146,8 @@ void MainWindow::on_pushButton_5_clicked()
             N++;
         }
     }
-    cout << "Respondents to all 'no' amounts to: " << N << endl;
+    ui->textBrowser->append("Respondents to all 'no' amounts to: ");
+    //cout << "Respondents to all 'no' amounts to: " << N << endl;
     fin.close();
 }
 

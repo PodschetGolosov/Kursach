@@ -1,0 +1,5 @@
+#Moscow #Den #3 Y Y Y 
+#Moscow #Tim #3 N N N 
+#Moscow #Alex #3 Y Y N 
+#Moscow #Bob #3 Y N Y 
+#Moscow #Anna #3 Y Y Y
